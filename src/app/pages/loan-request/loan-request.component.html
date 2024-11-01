@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <h2>Solicitud de Préstamo</h2>
+  <form (ngSubmit)="onRequestLoan()">
+    <div class="form-group">
+      <label for="monto">Monto</label>
+      <input type="number" class="form-control" id="monto" [(ngModel)]="loan.monto" name="monto" required>
+    </div>
+    <div class="form-group">
+      <label for="plazo">Plazo (Meses)</label>
+      <input type="number" class="form-control" id="plazo" [(ngModel)]="loan.plazo" name="plazo" required>
+    </div>
+    <div class="form-group">
+      <label for="interes">Interés (%)</label>
+      <input type="number" class="form-control" id="interes" [(ngModel)]="loan.interes" name="interes" required>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Solicitar Préstamo</button>
+  </form>
+</div>

@@ -1,0 +1,54 @@
+/* Centrar la marca y los enlaces en la navbar */
+.navbar-brand {
+  font-weight: bold;
+  text-align: center;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+/* Estilo del menú desplegable */
+.navbar .dropdown-menu {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.navbar .dropdown-menu .dropdown-item {
+  color: #333;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Estilo de la burbuja del avatar */
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+}
+/* Centra los enlaces del navbar */
+.navbar-nav {
+  text-align: center;
+}
+
+/* Estilos para el avatar */
+.user-avatar {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+/* Botón de sesión */
+.navbar .btn-primary {
+  margin-left: 10px;
+}

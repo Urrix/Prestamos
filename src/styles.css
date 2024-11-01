@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+footer {
+  background-color: #343a40;
+}
+
+.btn-success {
+  background-color: #00c853;
+  border: none;
+}
+
+.navbar-dark .navbar-brand {
+  font-weight: bold;
+}
+
+.text-success {
+  color: #00c853 !important;
+}
