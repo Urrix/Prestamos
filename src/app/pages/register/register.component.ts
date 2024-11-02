@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { v4 as uuidv4 } from 'uuid';
-import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +13,6 @@ export class RegisterComponent {
   clientAddress: string = '';
   clientId: string = '';
 
-  constructor(private emailService: EmailService) {}
 
   generateClientId() {
     this.clientId = uuidv4();
@@ -38,10 +36,6 @@ export class RegisterComponent {
     const subject = 'Confirmación de Registro';
     const text = `Gracias por registrarse. Su ID de cliente es: ${this.clientId} y su correo es: ${this.clientEmail}.`;
 
-    this.emailService.sendEmail(this.clientEmail, subject, text, '')
-      .subscribe({
-        next: () => alert('Registro exitoso y correo enviado.'),
-        error: () => alert('Registro exitoso, pero falló el envío del correo.')
-      });
+
   }
 }

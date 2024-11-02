@@ -1,45 +1,57 @@
+<!-- Contenedor Principal -->
 <div class="container mt-5">
+  <!-- Título de la sección -->
   <h2>Tabla de Amortización</h2>
 
+  <!-- Formulario para ingresar los datos del préstamo -->
   <form (ngSubmit)="calculateAmortization()">
+
+    <!-- Campo para ingresar el Monto del Préstamo -->
     <div class="form-group">
       <label for="loanAmount">Monto del Préstamo</label>
       <input type="number" class="form-control" id="loanAmount" [(ngModel)]="loanAmount" name="loanAmount">
     </div>
 
+    <!-- Campo para ingresar la Tasa de Interés -->
     <div class="form-group">
       <label for="interestRate">Tasa de Interés</label>
       <input type="number" class="form-control" id="interestRate" [(ngModel)]="interestRate" name="interestRate">
     </div>
 
+    <!-- Campo para ingresar el Plazo del Préstamo en meses -->
     <div class="form-group">
       <label for="loanTerm">Plazo del Préstamo (en meses)</label>
       <input type="number" class="form-control" id="loanTerm" [(ngModel)]="loanTerm" name="loanTerm">
     </div>
 
+    <!-- Botón para calcular la amortización -->
     <button type="submit" class="btn btn-primary">Calcular Amortización</button>
   </form>
 
-  <!-- Tabla de resultados de amortización -->
+  <!-- Sección de la tabla de resultados de amortización -->
   <div *ngIf="amortizationTable && amortizationTable.length > 0" class="mt-4">
+    <!-- Título para los resultados -->
     <h3>Resultados de Amortización</h3>
+
+    <!-- Tabla que muestra el desglose de la amortización -->
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th>Mes</th>
-          <th>Pago Mensual</th>
-          <th>Intereses</th>
-          <th>Capital</th>
-          <th>Saldo Restante</th>
+          <th>Mes</th> <!-- Columna para el número de mes -->
+          <th>Pago Mensual</th> <!-- Columna para el pago mensual -->
+          <th>Intereses</th> <!-- Columna para la porción de intereses -->
+          <th>Capital</th> <!-- Columna para la porción destinada al capital -->
+          <th>Saldo Restante</th> <!-- Columna para el saldo restante después de cada pago -->
         </tr>
       </thead>
       <tbody>
+        <!-- Fila dinámica para cada pago, generada a partir de la lista amortizationTable -->
         <tr *ngFor="let payment of amortizationTable">
-          <td>{{ payment.mes }}</td>
-          <td>{{ payment.pagoMensual }}</td>
-          <td>{{ payment.interes }}</td>
-          <td>{{ payment.capital }}</td>
-          <td>{{ payment.saldoRestante }}</td>
+          <td>{{ payment.mes }}</td> <!-- Muestra el número de mes -->
+          <td>{{ payment.pagoMensual }}</td> <!-- Muestra el pago mensual total -->
+          <td>{{ payment.interes }}</td> <!-- Muestra el interés pagado en el mes -->
+          <td>{{ payment.capital }}</td> <!-- Muestra la cantidad destinada al capital -->
+          <td>{{ payment.saldoRestante }}</td> <!-- Muestra el saldo restante después del pago -->
         </tr>
       </tbody>
     </table>

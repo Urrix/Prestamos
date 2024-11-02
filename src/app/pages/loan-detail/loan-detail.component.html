@@ -1,22 +1,28 @@
 <div class="container mt-5">
+  <!-- Título de la sección para la tabla de amortización -->
   <h2>Tabla de Amortización</h2>
+
+  <!-- Tabla de amortización con estilo de borde para mayor visibilidad -->
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>Mes</th>
-        <th>Pago Mensual</th>
-        <th>Interés</th>
-        <th>Capital</th>
-        <th>Saldo Restante</th>
+        <!-- Encabezado de la tabla con títulos de cada columna -->
+        <th>Mes</th> <!-- Columna para el número del mes en el plazo del préstamo -->
+        <th>Pago Mensual</th> <!-- Columna para el pago mensual que incluye capital e interés -->
+        <th>Interés</th> <!-- Columna que muestra la cantidad del pago destinada a intereses -->
+        <th>Capital</th> <!-- Columna que muestra la cantidad del pago destinada a capital -->
+        <th>Saldo Restante</th> <!-- Columna que muestra el saldo restante del préstamo después de cada pago -->
       </tr>
     </thead>
     <tbody>
+      <!-- Filas generadas dinámicamente para cada pago en la tabla de amortización -->
       <tr *ngFor="let payment of amortizationTable">
-        <td>{{ payment.mes }}</td>
-        <td>{{ payment.pagoMensual }}</td>
-        <td>{{ payment.interes }}</td>
-        <td>{{ payment.capital }}</td>
-        <td>{{ payment.saldoRestante }}</td>
+        <!-- Cada celda representa los datos de un pago específico en un mes dado -->
+        <td>{{ payment.mes }}</td> <!-- Muestra el número del mes -->
+        <td>{{ payment.pagoMensual }}</td> <!-- Muestra el monto del pago mensual total -->
+        <td>{{ payment.interes }}</td> <!-- Muestra la parte del pago destinada a intereses -->
+        <td>{{ payment.capital }}</td> <!-- Muestra la parte del pago destinada a capital -->
+        <td>{{ payment.saldoRestante }}</td> <!-- Muestra el saldo restante después del pago mensual -->
       </tr>
     </tbody>
   </table>

@@ -1,19 +1,37 @@
+<!-- Barra de Navegación Principal -->
 <nav class="navbar">
   <div class="navbar-container">
-    <!-- Logo y Links de Navegación -->
+
+    <!-- Sección de Logo y Links de Navegación -->
     <div class="navbar-links">
-      <a class="navbar-brand" routerLink="/">Xenon Bank</a>
+      <!-- Logo de la aplicación que redirige a la página principal al hacer clic -->
+      <a class="navbar-brand" routerLink="/">Pestamos Oswa</a>
+
+      <!-- Enlace a la página de Inicio -->
       <a routerLink="/">Inicio</a>
+
+      <!-- Enlace a la página de Características -->
       <a routerLink="/features">Características</a>
+
+      <!-- Enlace al formulario de Registro, visible solo si el usuario no está autenticado -->
       <a *ngIf="!isAuthenticated" routerLink="/register">Registro</a>
+
+      <!-- Enlace al formulario de Inicio de Sesión, visible solo si el usuario no está autenticado -->
       <a *ngIf="!isAuthenticated" routerLink="/login">Inicio de Sesión</a>
+
+      <!-- Enlace al Historial de Préstamos, visible solo si el usuario autenticado es de rol "client" -->
       <a *ngIf="isAuthenticated && userRole === 'client'" routerLink="/loan-history">Historial de Préstamos</a>
+
+      <!-- Enlace a la página de Solicitud de Préstamo, visible solo si el usuario autenticado es de rol "admin" -->
       <a *ngIf="isAuthenticated && userRole === 'admin'" routerLink="/loan-request">Solicitar Préstamo</a>
     </div>
 
-    <!-- Nombre del Usuario y Botón de Cerrar Sesión -->
+    <!-- Sección de Usuario y Botón de Cerrar Sesión, visible solo cuando el usuario está autenticado -->
     <div class="navbar-user" *ngIf="isAuthenticated">
+      <!-- Muestra el nombre del usuario autenticado -->
       <span>{{ userName }}</span>
+
+      <!-- Botón de Cerrar Sesión, que llama a la función `logout()` al hacer clic -->
       <button (click)="logout()" class="logout-button">Cerrar Sesión</button>
     </div>
   </div>

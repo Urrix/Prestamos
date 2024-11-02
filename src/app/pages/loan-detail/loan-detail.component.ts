@@ -15,6 +15,7 @@ interface Payment {
   styleUrls: ['./loan-detail.component.css']
 })
 export class LoanDetailComponent implements OnInit {
+  // Definición de una tabla de amortización con datos simulados
   amortizationTable: Payment[] = [
     { mes: 1, pagoMensual: 1000, interes: 200, capital: 800, saldoRestante: 9200 },
     { mes: 2, pagoMensual: 1000, interes: 180, capital: 820, saldoRestante: 8380 },
@@ -24,7 +25,8 @@ export class LoanDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    // Obtiene el ID del préstamo desde los parámetros de la ruta
     const loanId = this.route.snapshot.paramMap.get('id');
-    // Obtener la tabla de amortización por `loanId`
+    // Comentario: Aquí se puede agregar la lógica para obtener la tabla de amortización usando el `loanId`
   }
 }

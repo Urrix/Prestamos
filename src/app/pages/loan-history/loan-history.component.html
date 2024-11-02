@@ -1,23 +1,43 @@
 <div class="container mx-auto mt-5 p-4">
+  <!-- Título del Historial de Préstamos -->
   <h2 class="text-2xl font-bold mb-4">Historial de Préstamos</h2>
+
+  <!-- Contenedor con desplazamiento horizontal para la tabla -->
   <div class="overflow-x-auto">
+    <!-- Tabla de historial de préstamos -->
     <table class="min-w-full bg-white shadow-md rounded-lg">
+
+      <!-- Encabezado de la Tabla -->
       <thead>
         <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
-          <th class="py-3 px-6 text-left">Monto</th>
-          <th class="py-3 px-6 text-left">Interés</th>
-          <th class="py-3 px-6 text-left">Plazo</th>
-          <th class="py-3 px-6 text-left">Fecha</th>
-          <th class="py-3 px-6 text-left">Acción</th>
+          <!-- Columnas del Encabezado -->
+          <th class="py-3 px-6 text-left">Monto</th> <!-- Columna para el monto del préstamo -->
+          <th class="py-3 px-6 text-left">Interés</th> <!-- Columna para la tasa de interés -->
+          <th class="py-3 px-6 text-left">Plazo</th> <!-- Columna para el plazo en meses -->
+          <th class="py-3 px-6 text-left">Fecha</th> <!-- Columna para la fecha del préstamo -->
+          <th class="py-3 px-6 text-left">Acción</th> <!-- Columna para acciones como ver o descargar PDF -->
         </tr>
       </thead>
+
+      <!-- Cuerpo de la Tabla -->
       <tbody class="text-gray-600 text-sm font-light">
+        <!-- Fila dinámica para cada préstamo, generada usando *ngFor -->
         <tr *ngFor="let loan of loanRequests" class="border-b border-gray-200 hover:bg-gray-100">
+          <!-- Celda para el monto del préstamo -->
           <td class="py-3 px-6 text-left whitespace-nowrap">{{ loan.loanAmount }}</td>
+
+          <!-- Celda para el interés -->
           <td class="py-3 px-6 text-left">{{ loan.interestRate }}%</td>
+
+          <!-- Celda para el plazo del préstamo -->
           <td class="py-3 px-6 text-left">{{ loan.loanTerm }} meses</td>
+
+          <!-- Celda para la fecha del préstamo -->
           <td class="py-3 px-6 text-left">{{ loan.date }}</td>
+
+          <!-- Celda para el botón de acción -->
           <td class="py-3 px-6 text-left">
+            <!-- Botón para descargar o ver el PDF del préstamo -->
             <button (click)="downloadLoan(loan)"
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
               Ver PDF

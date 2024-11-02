@@ -1,36 +1,59 @@
 <div class="container mx-auto mt-5 p-4">
+  <!-- Título principal de la sección de solicitud de préstamo -->
   <h2 class="text-2xl font-bold mb-4">Solicitud de Préstamo</h2>
+
+  <!-- Formulario para capturar los datos del préstamo -->
   <form (ngSubmit)="onRequestLoan()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+
+    <!-- Campo de entrada para el ID de Cliente -->
     <div class="mb-4">
       <label for="clientId" class="block text-gray-700 text-sm font-bold mb-2">ID de Cliente</label>
+      <!-- Entrada de texto para el ID de cliente, vinculada a clientId mediante ngModel -->
       <input type="text" id="clientId" [(ngModel)]="clientId" name="clientId" required
              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
     </div>
+
+    <!-- Campo de entrada para el Nombre del Cliente -->
     <div class="mb-4">
       <label for="clientName" class="block text-gray-700 text-sm font-bold mb-2">Nombre del Cliente</label>
+      <!-- Entrada de texto para el nombre del cliente, vinculada a clientName mediante ngModel -->
       <input type="text" id="clientName" [(ngModel)]="clientName" name="clientName" required
              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
     </div>
+
+    <!-- Campo de entrada para el Correo Electrónico -->
     <div class="mb-4">
       <label for="clientEmail" class="block text-gray-700 text-sm font-bold mb-2">Correo Electrónico</label>
+      <!-- Entrada de correo electrónico para el email del cliente, vinculada a clientEmail mediante ngModel -->
       <input type="email" id="clientEmail" [(ngModel)]="clientEmail" name="clientEmail" required
              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
     </div>
+
+    <!-- Campo de entrada para el Monto del Préstamo -->
     <div class="mb-4">
       <label for="loanAmount" class="block text-gray-700 text-sm font-bold mb-2">Monto del Préstamo</label>
+      <!-- Entrada numérica para el monto del préstamo, vinculada a loanAmount mediante ngModel -->
       <input type="number" id="loanAmount" [(ngModel)]="loanAmount" name="loanAmount" required
              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
     </div>
+
+    <!-- Campo de entrada para la Tasa de Interés -->
     <div class="mb-4">
       <label for="interestRate" class="block text-gray-700 text-sm font-bold mb-2">Tasa de Interés (%)</label>
+      <!-- Entrada numérica para la tasa de interés, vinculada a interestRate mediante ngModel -->
       <input type="number" id="interestRate" [(ngModel)]="interestRate" name="interestRate" required
              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
     </div>
+
+    <!-- Campo de entrada para el Plazo del Préstamo en meses -->
     <div class="mb-4">
       <label for="loanTerm" class="block text-gray-700 text-sm font-bold mb-2">Plazo (meses)</label>
+      <!-- Entrada numérica para el plazo del préstamo, vinculada a loanTerm mediante ngModel -->
       <input type="number" id="loanTerm" [(ngModel)]="loanTerm" name="loanTerm" required
              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
     </div>
+
+    <!-- Botón para enviar la solicitud de préstamo -->
     <button type="submit"
             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
       Solicitar Préstamo
