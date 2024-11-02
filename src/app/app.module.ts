@@ -19,6 +19,7 @@ import { LoanRequestComponent } from './pages/loan-request/loan-request.componen
 import { LoanHistoryComponent } from './pages/loan-history/loan-history.component';
 import { LoanDetailComponent } from './pages/loan-detail/loan-detail.component';
 import { AmortizationComponent } from './pages/amortization/amortization.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AmortizationComponent } from './pages/amortization/amortization.compone
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
