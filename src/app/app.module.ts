@@ -13,12 +13,12 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { ClientDashboardComponent } from './pages/client-dashboard/client-dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { ProfileComponent } from './pages/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoanRequestComponent } from './pages/loan-request/loan-request.component';
 import { LoanHistoryComponent } from './pages/loan-history/loan-history.component';
 import { LoanDetailComponent } from './pages/loan-detail/loan-detail.component';
+import { AmortizationComponent } from './pages/amortization/amortization.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +32,12 @@ import { LoanDetailComponent } from './pages/loan-detail/loan-detail.component';
     LoginComponent,
     AdminDashboardComponent,
     ClientDashboardComponent,
-    ProfileComponent,
     RegisterComponent,
     DashboardComponent,
     LoanRequestComponent,
     LoanHistoryComponent,
-    LoanDetailComponent
+    LoanDetailComponent,
+    AmortizationComponent
   ],
   imports: [
     BrowserModule,

@@ -7,16 +7,18 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  isLoggedIn = false;
-  username: string | null = '';
-  avatar: string | null = '';  // Variable para almacenar la URL del avatar
+  isAuthenticated: boolean = false;
+  userRole: string | null = null;
+  userName: string | null = null;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.isLoggedIn$().subscribe(status => this.isLoggedIn = status);
-    this.authService.getUsername$().subscribe((name: string | null) => this.username = name);
-    this.authService.getAvatar$().subscribe((avatarUrl: string | null) => this.avatar = avatarUrl);
+    this.authService.isAuthenticated$.subscribe(isAuth => {
+      this.isAuthenticated = isAuth;
+      this.userRole = this.authService.getRole();
+      this.userName = this.authService.getUserName();
+    });
   }
 
   logout() {

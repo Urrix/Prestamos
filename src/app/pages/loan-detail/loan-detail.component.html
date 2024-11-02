@@ -1,1 +1,23 @@
-<p>loan-detail works!</p>
+<div class="container mt-5">
+  <h2>Tabla de Amortización</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Mes</th>
+        <th>Pago Mensual</th>
+        <th>Interés</th>
+        <th>Capital</th>
+        <th>Saldo Restante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let payment of amortizationTable">
+        <td>{{ payment.mes }}</td>
+        <td>{{ payment.pagoMensual }}</td>
+        <td>{{ payment.interes }}</td>
+        <td>{{ payment.capital }}</td>
+        <td>{{ payment.saldoRestante }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoanService } from '../../services/loan.service';
 
 @Component({
   selector: 'app-loan-request',
@@ -7,15 +6,29 @@ import { LoanService } from '../../services/loan.service';
   styleUrls: ['./loan-request.component.css']
 })
 export class LoanRequestComponent {
-  loan = {
-    monto: 0,
-    plazo: 0,
-    interes: 0
-  };
-
-  constructor(private loanService: LoanService) {}
+  clientId: string = '';
+  clientName: string = '';
+  clientEmail: string = '';
+  loanAmount: number = 0;
+  interestRate: number = 0;
+  loanTerm: number = 0;
 
   onRequestLoan() {
-    this.loanService.requestLoan(this.loan);
+    const loanRequest = {
+      clientId: this.clientId,
+      clientName: this.clientName,
+      clientEmail: this.clientEmail,
+      loanAmount: this.loanAmount,
+      interestRate: this.interestRate,
+      loanTerm: this.loanTerm,
+      date: new Date()
+    };
+
+    // Simula el almacenamiento del préstamo en el perfil del cliente
+    const clientLoans = JSON.parse(localStorage.getItem(this.clientId) || '[]');
+    clientLoans.push(loanRequest);
+    localStorage.setItem(this.clientId, JSON.stringify(clientLoans));
+
+    alert('Solicitud de préstamo guardada en el perfil del cliente.');
   }
 }

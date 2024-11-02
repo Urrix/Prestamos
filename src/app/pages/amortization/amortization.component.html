@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <h2>Tabla de Amortización</h2>
+
+  <form (ngSubmit)="calculateAmortization()">
+    <div class="form-group">
+      <label for="loanAmount">Monto del Préstamo</label>
+      <input type="number" class="form-control" id="loanAmount" [(ngModel)]="loanAmount" name="loanAmount">
+    </div>
+
+    <div class="form-group">
+      <label for="interestRate">Tasa de Interés</label>
+      <input type="number" class="form-control" id="interestRate" [(ngModel)]="interestRate" name="interestRate">
+    </div>
+
+    <div class="form-group">
+      <label for="loanTerm">Plazo del Préstamo (en meses)</label>
+      <input type="number" class="form-control" id="loanTerm" [(ngModel)]="loanTerm" name="loanTerm">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Calcular Amortización</button>
+  </form>
+
+  <!-- Tabla de resultados de amortización -->
+  <div *ngIf="amortizationTable && amortizationTable.length > 0" class="mt-4">
+    <h3>Resultados de Amortización</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Mes</th>
+          <th>Pago Mensual</th>
+          <th>Intereses</th>
+          <th>Capital</th>
+          <th>Saldo Restante</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of amortizationTable">
+          <td>{{ payment.mes }}</td>
+          <td>{{ payment.pagoMensual }}</td>
+          <td>{{ payment.interes }}</td>
+          <td>{{ payment.capital }}</td>
+          <td>{{ payment.saldoRestante }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

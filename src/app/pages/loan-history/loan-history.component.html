@@ -1,1 +1,30 @@
-<p>loan-history works!</p>
+<div class="container mx-auto mt-5 p-4">
+  <h2 class="text-2xl font-bold mb-4">Historial de Préstamos</h2>
+  <div class="overflow-x-auto">
+    <table class="min-w-full bg-white shadow-md rounded-lg">
+      <thead>
+        <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
+          <th class="py-3 px-6 text-left">Monto</th>
+          <th class="py-3 px-6 text-left">Interés</th>
+          <th class="py-3 px-6 text-left">Plazo</th>
+          <th class="py-3 px-6 text-left">Fecha</th>
+          <th class="py-3 px-6 text-left">Acción</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-600 text-sm font-light">
+        <tr *ngFor="let loan of loanRequests" class="border-b border-gray-200 hover:bg-gray-100">
+          <td class="py-3 px-6 text-left whitespace-nowrap">{{ loan.loanAmount }}</td>
+          <td class="py-3 px-6 text-left">{{ loan.interestRate }}%</td>
+          <td class="py-3 px-6 text-left">{{ loan.loanTerm }} meses</td>
+          <td class="py-3 px-6 text-left">{{ loan.date }}</td>
+          <td class="py-3 px-6 text-left">
+            <button (click)="downloadLoan(loan)"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Ver PDF
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

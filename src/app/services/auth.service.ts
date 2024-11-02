@@ -1,54 +1,48 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated = new BehaviorSubject<boolean>(false);
-  private username = new BehaviorSubject<string | null>(null);
-  private avatar = new BehaviorSubject<string | null>(null);  // Para la imagen del avatar
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   constructor(private router: Router) {}
 
-  // Método de inicio de sesión con credenciales fijas para admin y cliente
-  login(role: 'admin' | 'client', password: string) {
-    if ((role === 'admin' && password === 'admin123') ||
-        (role === 'client' && password === 'client123')) {
-      this.isAuthenticated.next(true);
-      this.username.next(role === 'admin' ? 'Admin' : 'Cliente');
-      this.router.navigate(['/dashboard']);
-    } else {
-      alert('Credenciales inválidas');
+  private users = [
+    { userId: 'admin123', password: 'adminpass', name: 'Admin User', role: 'admin' },
+    { userId: 'client123', password: 'clientpass', name: 'Client User', role: 'client' }
+  ];
+
+  login(userId: string, password: string): boolean {
+    const user = this.users.find(u => u.userId === userId && u.password === password);
+
+    if (user) {
+      localStorage.setItem('role', user.role);
+      localStorage.setItem('userId', user.userId);
+      localStorage.setItem('userName', user.name); // Guardar el nombre del usuario
+      this.isAuthenticatedSubject.next(true);
+      return true;
     }
+
+    return false;
   }
 
-  // Método para cerrar sesión
   logout() {
-    this.isAuthenticated.next(false);
-    this.username.next(null);
-    this.avatar.next(null);  // Restablece el avatar al cerrar sesión
+    localStorage.removeItem('role');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/login']);
   }
 
-  // Método para obtener el estado de autenticación
-  isLoggedIn$() {
-    return this.isAuthenticated.asObservable();
+  getRole(): string | null {
+    return localStorage.getItem('role');
   }
 
-  // Método para obtener el nombre de usuario como observable
-  getUsername$() {
-    return this.username.asObservable();
-  }
-
-  // Método para obtener el avatar como observable
-  getAvatar$() {
-    return this.avatar.asObservable();
-  }
-
-  // Método para actualizar el avatar del usuario
-  updateUserAvatar(avatarUrl: string) {
-    this.avatar.next(avatarUrl);
+  getUserName(): string | null {
+    return localStorage.getItem('userName');
   }
 }
